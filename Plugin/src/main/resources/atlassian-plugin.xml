@@ -1,0 +1,54 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="comparator-plugin"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="comparator-plugin-resources" name="comparator-plugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.confluence.plugins.confluence-create-content-plugin:resources</dependency>
+
+        <transformation extension="soy">
+            <transformer key="soyTransformer">
+                <functions>com.atlassian.confluence.plugins.soy:soy-core-functions
+                </functions>
+            </transformer>
+        </transformation>
+        
+        <resource type="download" name="comparator-plugin.css" location="/css/comparator-plugin.css"/>
+        <resource type="download" name="comparator-plugin.js" location="/js/comparator-plugin.js"/>
+        <resource type="download" name="script.js" location="/js/script.js"/>
+        <resource type="download" name="mySoyTemplate.soy.js" location="/soy/mySoyTemplate.soy" />
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>create-content</context>
+    </web-resource>
+
+    <content-template key="comparator-plugin-template" i18n-name-key="my.blueprint.title">
+       <resource name="template" type="download" location="/templates/myTemplate.xml" />
+   </content-template>
+    
+    <!-- Blueprint -->
+    <blueprint key="my-blueprint" content-template-key="comparator-plugin-template" index-key="my-index" i18n-name-key="my.blueprint.name">
+        <dialog-wizard key="comparator-plugin-wizard">
+            <dialog-page id="form" template-key="Comparator.Plugin.Blueprint.form" title-key="my.blueprint.wizard.page1.title" 
+                description-header-key="my.blueprint.wizard.page1.desc.header"
+                description-content-key="my.blueprint.wizard.page1.desc.content"
+                last="true"/>
+        </dialog-wizard>
+    </blueprint>
+
+     <!-- Add to the Create Menu -->
+    <web-item key="create-by-sample-template" i18n-name-key="my.create-link.title" section="system.create.dialog/content">
+        <description key="my.create-link.description" />
+        <resource name="icon" type="download" location="/images/myblueprint.png" />
+        <param name="blueprintKey" value="my-blueprint" />
+    </web-item>
+</atlassian-plugin>

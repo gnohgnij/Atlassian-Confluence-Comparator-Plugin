@@ -1,0 +1,1 @@
+Confluence.Blueprint.setWizard('com.example.plugin.comparator-plugin:create-by-sample-template', function(wizard) {})

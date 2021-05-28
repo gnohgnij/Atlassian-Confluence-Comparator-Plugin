@@ -1,0 +1,10 @@
+<ac:layout>
+    <ac:layout-section type="two_equal">
+        <ac:layout-cell>
+            <p><at:var at:name="pageVersion1"/></p>
+        </ac:layout-cell>
+        <ac:layout-cell>
+            <p><at:var at:name="pageVersion2"/></p>
+        </ac:layout-cell>
+    </ac:layout-section>
+</ac:layout>
