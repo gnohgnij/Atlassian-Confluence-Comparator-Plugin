@@ -35,9 +35,7 @@ function fetchAllPagesTitlesOnClick(){
 
     //ensure that each page title is only shown once when button is clicked multiple times
     if(selOption.length > 0){
-        while(selOption.length > 0){
-            selOption.remove(0);    //remove all exisiting options first
-        }
+        selOption.innerHTML = "";   //remove all exisiting options first
     }
 
     //create and append options
@@ -86,10 +84,8 @@ function fetchPageVersionsOnClick(){
 
     //ensure that each page version is only shown once when button is clicked multiple times
     if(pageVer1Sel.length > 0 || pageVer2Sel.length > 0){
-        while(pageVer1Sel.length > 0 || pageVer2Sel.length > 0){
-            pageVer1Sel.remove(0);    //remove all exisiting options first
-            pageVer2Sel.remove(0);
-        }
+        pageVer1Sel.innerHTML = ""; //remove all exisiting options first
+        pageVer2Sel.innerHTML = "";
     }
 
     //create and append options
