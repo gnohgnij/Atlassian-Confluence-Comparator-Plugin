@@ -127,7 +127,7 @@ function fetchPageVersionContent(num){
         $.ajax({
             url : contentURL,
             success : function(response){
-                let contentTitle = "Version " + selectedPageVer + "\n";
+                let contentTitle = "<h3>Version " + selectedPageVer + "</h3>";
                 let content = $(response).find("#main-content").html();
                 
                 content = contentTitle + content;
