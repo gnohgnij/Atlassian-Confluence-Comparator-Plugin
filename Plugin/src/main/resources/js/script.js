@@ -1,107 +1,50 @@
-let baseURL = "http://localhost:1990/confluence";
+let baseURL = document.getElementById('confluence-base-url').content;
 let pageTitleJson = "";
 let pageVerJson = "";
-let selectedPID = "";
+let selectedPID = AJS.params.pageId;
+let selected1 = "";
+let selected2 = "";
 
-/**
- * onInit - functions to call when document loads
- */
-function onInit(){
-    fetchAllPages();
-}
-document.onload = onInit();
-
-/**
- * fetchAllPageTitles - fetch all pages when Create is clicked
- */
-
-function fetchAllPages() {
-
-    //fetch all page titles using fetch api
-    let url = baseURL + "/rest/api/content?type=page&start=0&limit=99999";
-    fetch(url)
-    .then(response => response.json())
-    .then(json => {
-        pageTitleJson = json.results;
-    })
-}
-
-/**
- * fetchAllPagesTitlesOnClick - display all page titles in options on button click
- */
-
-function fetchAllPagesTitlesOnClick(){
-    let selOption = document.getElementById("pageTitleSel");
-
-    //ensure that each page title is only shown once when button is clicked multiple times
-    if(selOption.length > 0){
-        selOption.innerHTML = "";   //remove all exisiting options first
-    }
-
-    //create and append options
-    pageTitleJson.forEach(array => {
-        let newOp = document.createElement("OPTION");
-        newOp.textContent = array.title;
-        selOption.appendChild(newOp);
-    })
-}
-
-/**
- * fetchVersionsOfPage - based on page title selected, fetch all previous versions, on option change
- */
-
-function fetchVersionsOfPage(){
-    let selectedOptions = document.getElementById("pageTitleSel");
-
-    let selectedPage = selectedOptions.options[selectedOptions.selectedIndex].text; //get the current selected value for page title
-
-    for(let i=0; i<pageTitleJson.length; i++){
-        if(pageTitleJson[i].title == selectedPage){
-            let url = baseURL + "/rest/experimental/content/" + pageTitleJson[i].id + "/version"
+AJS.toInit(function(){
+  let url = baseURL + "/rest/experimental/content/" + selectedPID + "/version"
             
-            fetch(url)  //fetch all versions using fetch api
-            .then(response => response.json())
-            .then(json => {
-                pageVerJson = json.results;
-            });
-        }
-    }
+  fetch(url)  //fetch all versions using fetch api
+  .then(response => response.json())
+  .then(json => {
+      pageVerJson = json.results;
+  });
+})
 
-    for(let i=0; i<pageTitleJson.length; i++){
-        if(pageTitleJson[i].title == selectedPage){
-            selectedPID = pageTitleJson[i].id;  //get page id of selected page
-        }
-    }
-}
 
 /**
  * fetchPageVersionsOnClick - display all page versions on button click
  */
 
 function fetchPageVersionsOnClick(){
-    let pageVer1Sel = document.getElementById("pageVersionSel1");
-    let pageVer2Sel = document.getElementById("pageVersionSel2");
+  let pageVer1Sel = document.getElementById("pageVersionSel1");
+  let pageVer2Sel = document.getElementById("pageVersionSel2");
 
-    //ensure that each page version is only shown once when button is clicked multiple times
-    if(pageVer1Sel.length > 0 || pageVer2Sel.length > 0){
-        pageVer1Sel.innerHTML = ""; //remove all exisiting options first
-        pageVer2Sel.innerHTML = "";
-    }
+  //ensure that each page version is only shown once when button is clicked multiple times
+  if(pageVer1Sel.length > 0 || pageVer2Sel.length > 0){
+    pageVer1Sel.innerHTML = ""; //remove all exisiting options first
+    pageVer2Sel.innerHTML = "";
+  }
 
-    //create and append options
-    pageVerJson.forEach(array => {
-        let newOp1 = document.createElement("option");
-        let newOp2 = document.createElement("option");
+  for(var key in pageVerJson){
+    let newOp1 = document.createElement("option");
+    let newOp2 = document.createElement("option");
 
-        newOp1.textContent = array.number;
-        newOp2.textContent = array.number;
+    let num = pageVerJson[key].number;
 
-        newOp1.setAttribute("id", "1." + array.number);
-        newOp2.setAttribute("id", "2." + array.number);
+    newOp1.textContent = num;
+    newOp2.textContent = num;
 
-        pageVer1Sel.appendChild(newOp1);
-        pageVer2Sel.appendChild(newOp2);
-    })    
+    newOp1.setAttribute("id", "1." + num.toString());
+    newOp2.setAttribute("id", "2." + num.toString());
+
+    pageVer1Sel.appendChild(newOp1);
+    pageVer2Sel.appendChild(newOp2);
+  } 
 }
 
 
@@ -120,9 +63,7 @@ function fetchPageVersionContent(num){
     fetch(fetchURL)// fetch page version content
     .then(response => response.json())
     .then(json => {
-        console.log(json);
         contentURL = baseURL+json.content._links.webui;
-        console.log(contentURL);
         
         $.ajax({
             url : contentURL,

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Comparator Plugin</title>
+        <meta name="decorator" content="atl.general" />
+        #requireResource(com.example.plugin.comparator-plugin:comparator-plugin-resources)
+    </head>
+    <body>
+        <div id="intro-text">
+            <h3>Welcome to the Comparator Plugin</h3>
+            <p>This plugin allows you to compare between two versions of the selected page.</p>
+            <h3>Instructions:</h3>
+            <p>Click "Get All Versions" <strong>before</strong> selecting page versions. <br>
+                Wait for the "Success" alert <strong>before</strong> creating the template.
+            </p>
+            <form id="form" class="aui" method="get" action="${req.contextPath}/comparator-plugin/result/comparator-plugin-result-xwork.action">
+                <fieldset>
+                    <button type="button" onClick="fetchPageVersionsOnClick()" style="margin: 2vh auto; display: block;">Get All Versions</button>
+
+                    <label for="pageVersion1" style="margin: 2vh 2vw;">Select Page Version:</label>
+                    <select name="pageVersion1" style="margin: 2vh auto;" id="pageVersionSel1" onChange="fetchPageVersionContent(1)">
+                    </select>
+
+                    <div style="display: block;"></div>
+
+                    <label for="pageVersion2" style="margin: 2vh 2vw;">Select Page Version:</label>
+                    <select name="pageVersion2" style="margin: 2vh auto;" id="pageVersionSel2" onChange="fetchPageVersionContent(2)">
+                    </select>
+
+                    <div style="display: block;"></div>
+
+                    <button type="submit" form="form" value="Submit" style="margin: 2vh auto; display: block;">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        <!-- <div style="display: grid; grid-template-columns: 1fr 4fr;">
+            <div style="border-style: solid; padding: 10px; position: relative; top: 50%;">
+                <p>Click "Get All Versions" <strong>before</strong> selecting page versions. <br>
+                Wait for the "Success" alert <strong>before</strong> creating the template.
+                </p>
+                <form id="form" class="aui" method="post" action="/test/xwork/test-xwork-action.action">
+                    <fieldset>
+                        <button type="button" onClick="fetchPageVersionsOnClick()" style="margin: 2vh auto; display: block;">Get All Versions</button>
+
+                        <label for="pageVersion1" style="margin: 2vh 2vw;">Select Page Version:</label>
+                        <select name="pageVersion1" style="margin: 2vh auto;" id="pageVersionSel1" onChange="fetchPageVersionContent(1)">
+                        </select>
+
+                        <div style="display: block;"></div>
+
+                        <label for="pageVersion2" style="margin: 2vh 2vw;">Select Page Version:</label>
+                        <select name="pageVersion2" style="margin: 2vh auto;" id="pageVersionSel2" onChange="fetchPageVersionContent(2)">
+                        </select>
+
+                        <div style="display: block;"></div>
+
+                        <button onClick="submitBtn()" type="button" form="form" value="Submit" style="margin: 2vh auto; display: block;">Submit</button>
+                    </fieldset>
+                </form>
+            </div> 
+            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1rem; padding: 10px;">
+                <div id="col1"></div>
+                <div id="col2"></div>
+            </div>   
+        </div> -->         
+    </body>
+</html>
+

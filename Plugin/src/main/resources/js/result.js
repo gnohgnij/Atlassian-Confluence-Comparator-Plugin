@@ -1,14 +1,13 @@
-Confluence.Blueprint.setWizard('com.example.plugin.comparator-plugin:create-by-sample-template', function(wizard) {
-    wizard.on('submit.form', function(e, state){
+window.onload = function () {
+    let pageVersion1 = document.getElementById("col1");
+    let pageVersion2 = document.getElementById("col2");
 
-      let pageDiff = diff(state.pageData.pageVersion1, state.pageData.pageVersion2);
-      console.log(pageDiff);
-      state.pageData.pageVersion2 = pageDiff;
+    let urlParams = new URLSearchParams(window.location.search);
 
-    })
+    pageVersion1.innerHTML = urlParams.get("pageVersion1");
+    pageVersion2.innerHTML = diff(urlParams.get("pageVersion2"), urlParams.get("pageVersion1"));
 
-    
-})
+}
 
 /**
   * htmldiff.js - https://github.com/tnwinc/htmldiff.js
@@ -368,5 +367,4 @@ Confluence.Blueprint.setWizard('com.example.plugin.comparator-plugin:create-by-s
      ops = calculate_operations(before, after);
      return render_operations(before, after, ops);
  };
-
 

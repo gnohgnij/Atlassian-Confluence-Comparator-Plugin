@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Compare Results</title>
+        <meta name="decorator" content="atl.general" />
+        #requireResource(com.example.plugin.comparator-plugin:comparator-plugin-resources)
+    </head>
+    <body>
+        <div id="compare-div">
+            <div id="col1"></div>
+            <div id="col2"></div>
+        </div> 
+    </body>
+</html>
+

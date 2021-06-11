@@ -1,0 +1,11 @@
+#intro-text{
+    margin-top: 10vh;
+    text-align: center;
+    background-color: lightyellow;
+}
+
+#compare-div{
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 1rem;
+}

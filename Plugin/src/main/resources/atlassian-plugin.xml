@@ -13,42 +13,37 @@
     <!-- add our web resources -->
     <web-resource key="comparator-plugin-resources" name="comparator-plugin Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <dependency>com.atlassian.confluence.plugins.confluence-create-content-plugin:resources</dependency>
-
-        <transformation extension="soy">
-            <transformer key="soyTransformer">
-                <functions>com.atlassian.confluence.plugins.soy:soy-core-functions
-                </functions>
-            </transformer>
-        </transformation>
         
         <resource type="download" name="comparator-plugin.css" location="/css/comparator-plugin.css"/>
-        <resource type="download" name="comparator-plugin.js" location="/js/comparator-plugin.js"/>
         <resource type="download" name="script.js" location="/js/script.js"/>
-        <resource type="download" name="mySoyTemplate.soy.js" location="/soy/mySoyTemplate.soy" />
+        <resource type="download" name="result.js" location="/js/result.js"/>
+        <resource type="download" name="template.vm" location="/velocity/template.vm" />
         <resource type="download" name="images/" location="/images"/>
-
-        <context>create-content</context>
     </web-resource>
 
-    <content-template key="comparator-plugin-template" i18n-name-key="my.blueprint.title">
-       <resource name="template" type="download" location="/templates/myTemplate.xml" />
-   </content-template>
-    
-    <!-- Blueprint -->
-    <blueprint key="my-blueprint" content-template-key="comparator-plugin-template" index-key="my-index" i18n-name-key="my.blueprint.name">
-        <dialog-wizard key="comparator-plugin-wizard">
-            <dialog-page id="form" template-key="Comparator.Plugin.Blueprint.form" title-key="my.blueprint.wizard.page1.title" 
-                description-header-key="my.blueprint.wizard.page1.desc.header"
-                description-content-key="my.blueprint.wizard.page1.desc.content"
-                last="true"/>
-        </dialog-wizard>
-    </blueprint>
-
-     <!-- Add to the Create Menu -->
-    <web-item key="create-by-sample-template" i18n-name-key="my.create-link.title" section="system.create.dialog/content">
-        <description key="my.create-link.description" />
-        <resource name="icon" type="download" location="/images/myblueprint.png" />
-        <param name="blueprintKey" value="my-blueprint" />
+    <web-item name="comparator-plugin-action-web-ui" key="comparator-plugin-action-web-ui" section="system.content.action/primary" weight="10">
+        <description key="item.comparator-plugin-action-web-ui.link.desc">Compare 2 versions of a page</description>
+        <label key="Comparator Plugin"/>
+        <link linkId="my-link">/plugins/comparator-plugin/comparator-plugin.action?pageId=$page.id</link>
     </web-item>
+
+    <xwork name="comparator-plugin-action-xwork" key="comparator-plugin-action-xwork">
+        <description key="item.comparator-plugin-action-xwork.link.desc">Defines what the Comparator Plugin action does.</description>
+        <package name="comparator-plugin" extends="default" namespace="/plugins/comparator-plugin">
+            <default-interceptor-ref name="validatingStack"/>
+            <action name="comparator-plugin" class="com.example.plugin.ComparatorPluginAction">
+                <result name="success" type="velocity">/velocity/template.vm</result>
+            </action>
+        </package>
+    </xwork>
+
+    <xwork name="comparator-plugin-result-xwork" key="comparator-plugin-result">
+        <description key="comparator-plugin-result.desc">#</description>
+        <package name="comparator-plugin-result" extends="default" namespace="/comparator-plugin/result">
+            <default-interceptor-ref name="validatingStack"/>
+            <action name="comparator-plugin-result-xwork" class="com.example.plugin.ComparatorPluginResultAction">
+                <result name="success" type="velocity">/velocity/result.vm</result>
+            </action>
+        </package>
+    </xwork>
 </atlassian-plugin>
