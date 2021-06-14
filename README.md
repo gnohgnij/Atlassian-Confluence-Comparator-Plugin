@@ -1,5 +1,7 @@
 # Atlassian-Confluence-Comparator-Plugin
-This is a plugin for Atlassian Confluence. Its purpose is to compare the contents of different historical versions of a page.
+This is a plugin for Atlassian Confluence. 
+
+Its purpose is to compare the contents of different historical versions of a page.
 
 # Instructions⚙️
 1. Install and set up [Atlassian SDK](https://developer.atlassian.com/server/framework/atlassian-sdk/set-up-the-atlassian-plugin-sdk-and-build-a-project/).
