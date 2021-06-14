@@ -16,4 +16,4 @@ Its purpose is to compare the contents of different historical versions of a pag
 
 5. Update your base url.
 
-6. Navigate to the _..._ beside the "Create" button to start using the plugin.
+6. Navigate to a page and click the *"..."* button to find the Comparator Plugin
