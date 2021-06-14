@@ -2,8 +2,6 @@ let baseURL = document.getElementById('confluence-base-url').content;
 let pageTitleJson = "";
 let pageVerJson = "";
 let selectedPID = AJS.params.pageId;
-let selected1 = "";
-let selected2 = "";
 
 AJS.toInit(function(){
   let url = baseURL + "/rest/experimental/content/" + selectedPID + "/version"
@@ -20,7 +18,9 @@ AJS.toInit(function(){
  * fetchPageVersionsOnClick - display all page versions on button click
  */
 
-function fetchPageVersionsOnClick(){
+ function fetchPageVersionsOnClick(){
+  alert("Fetching contents in progress");
+
   let pageVer1Sel = document.getElementById("pageVersionSel1");
   let pageVer2Sel = document.getElementById("pageVersionSel2");
 
@@ -44,22 +44,11 @@ function fetchPageVersionsOnClick(){
 
     pageVer1Sel.appendChild(newOp1);
     pageVer2Sel.appendChild(newOp2);
-  } 
-}
 
-
-/**
- * fetchPageVersionContent - fetch the content of each version and display in template
- */
-
-function fetchPageVersionContent(num){
-    let selectedOptions = document.getElementById("pageVersionSel" + num);
-    let selectedPageVer = selectedOptions.options[selectedOptions.selectedIndex].text; //get the current selected value for page title
-    
-    
     let contentURL = "";
+    let fetchURL = baseURL + "/rest/experimental/content/" + selectedPID + "/version/" + num;
 
-    let fetchURL = baseURL + "/rest/experimental/content/" + selectedPID + "/version/" + selectedPageVer;   
+
     fetch(fetchURL)// fetch page version content
     .then(response => response.json())
     .then(json => {
@@ -68,18 +57,19 @@ function fetchPageVersionContent(num){
         $.ajax({
             url : contentURL,
             success : function(response){
-                let contentTitle = "<h3>Version " + selectedPageVer + "</h3>";
+                let contentTitle = "<h3>Version " + num + "</h3>";
                 let content = $(response).find("#main-content").html();
                 
                 content = contentTitle + content;
 
-                let pageVerSel = document.getElementById(num + "." + selectedPageVer);
-                pageVerSel.setAttribute("value", content);  //set the content as the value of the option
-                alert("Success");
+                newOp1.setAttribute("value", content);  //set the content as the value of the option
+                newOp2.setAttribute("value", content);
             }
         })
     });
-    
+  }
+
+  alert("Fetching completed!");
 }
 
 

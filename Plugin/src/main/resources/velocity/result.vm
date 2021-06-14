@@ -6,9 +6,11 @@
         #requireResource(com.example.plugin.comparator-plugin:comparator-plugin-resources)
     </head>
     <body>
+    #set($pageVersion1WithHtml = $pageVersion1) <!-- to render html elements -->
+    #set($pageVersion2WithHtml = $pageVersion2)
         <div id="compare-div">
-            <div id="col1"></div>
-            <div id="col2"></div>
+            <div id="col1">${pageVersion1WithHtml}</div>
+            <div id="col2">${pageVersion2WithHtml}</div>
         </div> 
     </body>
 </html>
