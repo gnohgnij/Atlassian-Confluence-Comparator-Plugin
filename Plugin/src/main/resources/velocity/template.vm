@@ -16,6 +16,14 @@
                 <fieldset>
                     <button type="button" onClick="fetchPageVersionsOnClick()" style="margin: 2vh auto; display: block;">Get All Versions</button>
 
+                    <table id="table" style="margin: 0 auto; visibility: hidden;">
+                        <tr>
+                            <th>Version</th>
+                            <th>Date of Update</th>
+                            <th>Updated By</th>
+                        </tr>
+                    </table>
+
                     <label for="pageVersion1" style="margin: 2vh 2vw;">Select Page Version:</label>
                     <select name="pageVersion1" style="margin: 2vh auto;" id="pageVersionSel1">
                     </select>

@@ -1,5 +1,4 @@
 let baseURL = document.getElementById('confluence-base-url').content;
-let pageTitleJson = "";
 let pageVerJson = "";
 let selectedPID = AJS.params.pageId;
 
@@ -19,10 +18,15 @@ AJS.toInit(function(){
  */
 
  function fetchPageVersionsOnClick(){
-  alert("Fetching contents in progress");
+
+  alert("Fetching contents in progress...");
 
   let pageVer1Sel = document.getElementById("pageVersionSel1");
   let pageVer2Sel = document.getElementById("pageVersionSel2");
+  
+  let table = document.getElementById("table");
+  table.style.visibility = "visible";
+  table.style.borderCollapse = "collapse";
 
   //ensure that each page version is only shown once when button is clicked multiple times
   if(pageVer1Sel.length > 0 || pageVer2Sel.length > 0){
@@ -31,10 +35,26 @@ AJS.toInit(function(){
   }
 
   for(var key in pageVerJson){
+    let num = pageVerJson[key].number;
+    let when = pageVerJson[key].when;
+    let by = pageVerJson[key].by.username;
+
+    //fill table
+    let tableRow = document.createElement("tr");
+    let numTableData = document.createElement("td");
+    numTableData.innerHTML = num;
+    let whenTableData = document.createElement("td");
+    whenTableData.innerHTML = when;
+    let byTableData = document.createElement("td");
+    byTableData.innerHTML = by;
+    tableRow.appendChild(numTableData);
+    tableRow.appendChild(whenTableData);
+    tableRow.appendChild(byTableData);
+    table.appendChild(tableRow);
+
+    //fill option value
     let newOp1 = document.createElement("option");
     let newOp2 = document.createElement("option");
-
-    let num = pageVerJson[key].number;
 
     newOp1.textContent = num;
     newOp2.textContent = num;

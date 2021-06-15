@@ -9,3 +9,13 @@
     grid-template-columns: 1fr 1fr; 
     grid-gap: 1rem;
 }
+
+#table th, td{
+    border: 1px solid #ccccad;
+    text-align: left;
+    padding: 8px;
+}
+
+#table tr:nth-child(even) {
+    background-color: #ccccad;
+  }
