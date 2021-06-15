@@ -3,6 +3,8 @@ This is a plugin for Atlassian Confluence.
 
 Its purpose is to compare the contents of different historical versions of a page.
 
+Latest Version: 1.0.1
+
 # Instructions⚙️
 1. Navigate to *Manage apps* on your Confluence Instance/Server.
 2. Click on *Upload app*.
