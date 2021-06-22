@@ -7,15 +7,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example.plugin</groupId>
     <artifactId>comparator-plugin</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <organization>
-        <name>Example Company</name>
-        <url>http://www.example.com/</url>
+        <name>Chong Jing Hong</name>
+        <url>https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin</url>
     </organization>
 
-    <name>comparator-plugin</name>
-    <description>This is the com.example.plugin:comparator-plugin plugin for Atlassian Confluence.</description>
+    <name>Comparator Plugin</name>
+    <description>This plugin allows you to compare between two versions of the selected page.</description>
     <packaging>atlassian-plugin</packaging>
 
     <dependencies>
