@@ -4,12 +4,6 @@
     background-color: lightyellow;
 }
 
-#compare-div{
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-gap: 1rem;
-}
-
 #table th, td{
     border: 1px solid #ccccad;
     text-align: left;

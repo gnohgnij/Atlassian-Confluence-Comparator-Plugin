@@ -1,25 +1,32 @@
 let baseURL = document.getElementById('confluence-base-url').content;
-let pageVerJson = "";
 let selectedPID = AJS.params.pageId;
+let pageVerJson = "";
 
 AJS.toInit(function(){
-  let url = baseURL + "/rest/experimental/content/" + selectedPID + "/version"
-            
-  fetch(url)  //fetch all versions using fetch api
-  .then(response => response.json())
-  .then(json => {
-      pageVerJson = json.results;
-  });
+ fetchPageVersions();
 })
 
+async function getJSON(){
+  let url = baseURL + "/rest/experimental/content/" + selectedPID + "/version"
+            
+  return fetch(url)  //fetch all versions using fetch api
+  .then(response => response.json())
+  .then(json => {
+    console.log(json.results);
+    return json.results;
+  }).catch(err =>{
+    console.log(err);
+  });
+}
 
 /**
- * fetchPageVersionsOnClick - display all page versions on button click
+ * fetchPageVersions - display all page versions on button click
  */
 
- function fetchPageVersionsOnClick(){
+ async function fetchPageVersions(){
+  alert("Fetching page versions, please wait")
 
-  alert("Fetching contents in progress...");
+  pageVerJson = await getJSON();
 
   let pageVer1Sel = document.getElementById("pageVersionSel1");
   let pageVer2Sel = document.getElementById("pageVersionSel2");
@@ -88,9 +95,5 @@ AJS.toInit(function(){
         })
     });
   }
-
-  alert("Fetching completed!");
+  alert("Fetching completed");
 }
-
-
-

@@ -16,9 +16,13 @@
         
         <resource type="download" name="comparator-plugin.css" location="/css/comparator-plugin.css"/>
         <resource type="download" name="script.js" location="/js/script.js"/>
-        <resource type="download" name="result.js" location="/js/result.js"/>
-        <resource type="download" name="template.vm" location="/velocity/template.vm" />
         <resource type="download" name="images/" location="/images"/>
+    </web-resource>
+
+    <web-resource key="comparator-plugin-result-resources" name="comparator-plugin-action Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="result.js" location="/js/result.js"/>
+        <resource type="download" name="comparator-plugin.css" location="/css/comparator-plugin.css"/>
     </web-resource>
 
     <web-item name="comparator-plugin-action-web-ui" key="comparator-plugin-action-web-ui" section="system.content.action/primary" weight="10">

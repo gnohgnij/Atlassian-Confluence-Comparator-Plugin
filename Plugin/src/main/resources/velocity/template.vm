@@ -9,13 +9,8 @@
         <div id="intro-text">
             <h3>Welcome to the Comparator Plugin</h3>
             <p>This plugin allows you to compare between two versions of the selected page.</p>
-            <h3>Instructions:</h3>
-            <p>Click "Get All Versions" <strong>before</strong> selecting page versions.
-            </p>
             <form id="form" class="aui" method="post" action="${req.contextPath}/comparator-plugin/result/comparator-plugin-result-xwork.action">
                 <fieldset>
-                    <button type="button" onClick="fetchPageVersionsOnClick()" style="margin: 2vh auto; display: block;">Get All Versions</button>
-
                     <table id="table" style="margin: 0 auto; visibility: hidden;">
                         <tr>
                             <th>Version</th>
