@@ -14,11 +14,11 @@ Its purpose is to compare the contents of different historical versions of a pag
 
 # Screenshots 📸
 ![Image of call-to-action](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/Plugin/src/main/resources/images/cp-cta.png)
-<p style="text-align: center;>Plugin call-to-action</p>
+<p style="text-align: center;">Plugin call-to-action</p>
           
 ![Image of menu](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/Plugin/src/main/resources/images/cp-menu.png)
-<p style="text-align: center;>Plugin menu</p>
+<p style="text-align: center;">Plugin menu</p>
       
 ![Image of results](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/Plugin/src/main/resources/images/cp-results.png)
-<p style="text-align: center;>Plugin results</p>
+<p style="text-align: center;">Plugin results</p>
 
