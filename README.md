@@ -3,7 +3,7 @@ This is a plugin for Atlassian Confluence Server.
 
 Its purpose is to compare the contents of different historical versions of a page.
 
-**Latest Version: 1.0.2**
+**Latest Version: 1.0.6**
 
 # Instructions ⚙️
 1. Navigate to *Manage apps* on your Confluence Instance/Server.
