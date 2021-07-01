@@ -4,6 +4,14 @@ window.onload = function () {
 
   pageVersion2.innerHTML = diff(pageVersion1.innerHTML, pageVersion2.innerHTML);
 
+  $("#col1").scroll(function () { 
+    $("#col2").scrollLeft($("#col1").scrollLeft());
+  });
+  
+  $("#col2").scroll(function () { 
+    $("#col1").scrollLeft($("#col2").scrollLeft());
+  });
+
 }
 
 /**

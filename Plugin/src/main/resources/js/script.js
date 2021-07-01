@@ -24,7 +24,6 @@ async function getJSON(){
  */
 
  async function fetchPageVersions(){
-  alert("Fetching page versions, please wait")
 
   pageVerJson = await getJSON();
 
@@ -95,5 +94,4 @@ async function getJSON(){
         })
     });
   }
-  alert("Fetching completed");
 }
