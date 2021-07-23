@@ -1,0 +1,53 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="comparator-plugin"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="comparator-plugin-resources" name="comparator-plugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="comparator-plugin.css" location="/css/comparator-plugin.css"/>
+        <resource type="download" name="script.js" location="/js/script.js"/>
+        <resource type="download" name="images/" location="/images"/>
+    </web-resource>
+
+    <web-resource key="comparator-plugin-result-resources" name="comparator-plugin-action Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="result.js" location="/js/result.js"/>
+        <resource type="download" name="comparator-plugin.css" location="/css/comparator-plugin.css"/>
+    </web-resource>
+
+    <web-item name="comparator-plugin-action-web-ui" key="comparator-plugin-action-web-ui" section="system.content.action/primary" weight="10">
+        <description key="item.comparator-plugin-action-web-ui.link.desc">Compare 2 versions of a page</description>
+        <label key="Comparator Plugin"/>
+        <link linkId="my-link">/plugins/comparator-plugin/comparator-plugin.action?pageId=$page.id</link>
+    </web-item>
+
+    <xwork name="comparator-plugin-action-xwork" key="comparator-plugin-action-xwork">
+        <description key="item.comparator-plugin-action-xwork.link.desc">Defines what the Comparator Plugin action does.</description>
+        <package name="comparator-plugin" extends="default" namespace="/plugins/comparator-plugin">
+            <default-interceptor-ref name="validatingStack"/>
+            <action name="comparator-plugin" class="dso.plugin.ComparatorPluginAction">
+                <result name="success" type="velocity">/velocity/template.vm</result>
+            </action>
+        </package>
+    </xwork>
+
+    <xwork name="comparator-plugin-result-xwork" key="comparator-plugin-result">
+        <description key="comparator-plugin-result.desc">#</description>
+        <package name="comparator-plugin-result" extends="default" namespace="/comparator-plugin/result">
+            <default-interceptor-ref name="validatingStack"/>
+            <action name="comparator-plugin-result-xwork" class="dso.plugin.ComparatorPluginResultAction">
+                <result name="success" type="velocity">/velocity/result.vm</result>
+            </action>
+        </package>
+    </xwork>
+</atlassian-plugin>

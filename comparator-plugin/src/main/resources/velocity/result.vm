@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Compare Results</title>
+        <meta name="decorator" content="atl.general" />
+        #requireResource(dso.plugin.comparator-plugin:comparator-plugin-result-resources)
+    </head>
+    <body>
+    #set($pageVersion1WithHtml = $pageVersion1) <!-- to render html elements -->
+    #set($pageVersion2WithHtml = $pageVersion2)
+        <div id="compare-div" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-gap: 1rem;">
+            <div id="col1" style="overflow-x: scroll">${pageVersion1WithHtml}</div>
+            <div id="col2" style="overflow-x: scroll">${pageVersion2WithHtml}</div>
+        </div> 
+    </body>
+</html>
+
