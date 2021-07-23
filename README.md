@@ -13,12 +13,12 @@ Its purpose is to compare the contents of different historical versions of a pag
 5.  Click on the *"..."* button to find the Comparator Plugin.
 
 # Screenshots 📸
-![Image of call-to-action](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/Plugin/src/main/resources/images/cp-cta.png)
+![Image of call-to-action](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/comparator-plugin/src/main/resources/images/cp-cta.png)
 <p align="center">Plugin call-to-action</p>
           
-![Image of menu](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/Plugin/src/main/resources/images/cp-menu.png)
+![Image of menu](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/comparator-plugin/src/main/resources/images/cp-menu.png)
 <p align="center">Plugin menu</p>
       
-![Image of results](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/Plugin/src/main/resources/images/cp-results.png)
+![Image of results](https://github.com/gnohgnij/Atlassian-Confluence-Comparator-Plugin/blob/main/comparator-plugin/src/main/resources/images/cp-results.png)
 <p align="center">Plugin results</p>
 
