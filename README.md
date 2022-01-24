@@ -4,6 +4,6 @@ An Atlassian Confluence Server plugin that compares the html contents of two his
 **Latest Version: 1.1.0**
 
 # Instructions
-1. Navigate to *Manage apps* on your Confluence Instance/Server.
+1. Navigate to *Manage apps* on your Confluence Server.
 2. Click on *Upload app*.
 3. Upload the .jar/.obr file
